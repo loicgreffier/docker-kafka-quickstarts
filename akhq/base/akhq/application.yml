@@ -1,0 +1,5 @@
+akhq:
+  connections:
+    docker-kafka-quickstarts-cluster:
+      properties:
+        bootstrap.servers: 'broker:29092'
