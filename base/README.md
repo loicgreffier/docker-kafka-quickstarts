@@ -1,10 +1,9 @@
-# AKHQ Schema Registry
+# Base
 
 This Docker Compose environment includes:
 
 - KRaft broker
-- AKHQ, with required configuration
-- Schema Registry
+- Control Center
 
 ## Prerequisites
 

@@ -2,7 +2,7 @@ akhq:
   connections:
     docker-kafka-quickstarts-cluster:
       connect:
-        - name: 'local'
+        - name: 'connect-default'
           url: 'http://connect:8083'
       properties:
         bootstrap.servers: 'broker:29092'

@@ -22,12 +22,12 @@ Set of Docker Compose environments around Kafka.
 
 ### AKHQ
 
-| Module                                         | Description                                                                                   |
-|------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| [Base](/akhq/base)                             | KRaft broker, AKHQ                                                                            |
-| [Connect](/akhq/connect)                       | KRaft broker, AKHQ, Schema Registry, Kafka Connect                                            |
-| [Schema Registry](/akhq/schema-registry)       | KRaft broker, AKHQ, Schema Registry                                                           |
-| [ACLs SCRAM-SHA-512](/akhq/acls-scram-sha-512) | KRaft broker with ACLs and SCRAM-SHA-512 authentication, AKHQ, Schema Registry, Kafka Connect |
+| Module                                         | Description                                                                                |
+|------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [Base](/akhq/base)                             | KRaft broker, AKHQ                                                                         |
+| [Schema Registry](/akhq/schema-registry)       | KRaft broker, AKHQ, Schema Registry                                                        |
+| [Connect](/akhq/kafka-connect)                       | KRaft broker, AKHQ, Schema Registry, Kafka Connect                                         |
+| [ACLs SCRAM-SHA-512](/akhq/acls-scram-sha-512) | KRaft broker (ACLs and SCRAM-SHA-512 authentication), AKHQ, Schema Registry, Kafka Connect |
 
 ### Base
 
@@ -37,14 +37,14 @@ Set of Docker Compose environments around Kafka.
 
 ### Kafka Connect
 
-| Module                                    | Description                                                                                             |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| [ACLs SCRAM-SHA-512](/kafka-connect/base) | KRaft broker with ACLs and SCRAM-SHA-512 authentication, Schema Registry, Kafka Connect, Control Center |
-| [Base](/kafka-connect/base)               | KRaft broker, Schema Registry, Kafka Connect, Control Center                                            |
+| Module                                                  | Description                                                                                          |
+|---------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| [Base](/kafka-connect/base)                             | KRaft broker, Control Center, Schema Registry, Kafka Connect                                         |
+| [ACLs SCRAM-SHA-512](/kafka-connect/acls-scram-sha-512) | KRaft broker (ACLs and SCRAM-SHA-512 authentication), Control Center, Schema Registry, Kafka Connect |
 
 ### Schema Registry
 
-| Module                                      | Description                                                                              |
-|---------------------------------------------|------------------------------------------------------------------------------------------|
-| [ACLs SCRAM-SHA-512](/schema-registry/base) | KRaft broker with ACLs and SCRAM-SHA-512 authentication, Schema Registry, Control Center |
-| [Base](/schema-registry/base)               | KRaft broker, Schema Registry, Control Center                                            |
+| Module                                                    | Description                                                                           |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------|
+| [Base](/schema-registry/base)                             | KRaft broker, Control Center, Schema Registry                                         |
+| [ACLs SCRAM-SHA-512](/schema-registry/acls-scram-sha-512) | KRaft broker (ACLs and SCRAM-SHA-512 authentication), Control Center, Schema Registry |
