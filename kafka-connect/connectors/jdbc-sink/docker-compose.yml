@@ -58,12 +58,16 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_SASL_JAAS_CONFIG: org.apache.kafka.common.security.scram.ScramLoginModule required username="admin" password="admin";
 
   connect:
-    image: confluentinc/cp-kafka-connect:8.2.0
+    build:
+      context: ./dockerfile
+      dockerfile: Dockerfile
+    image: cp-kafka-connect-jdbc:8.2.0
     hostname: connect
     container_name: connect
     depends_on:
       - broker
       - schema-registry
+      - postgres
     ports:
       - "8083:8083"
     networks:
@@ -123,6 +127,19 @@ services:
       CONTROL_CENTER_KAFKA_MYCLUSTER_SASL_MECHANISM: SCRAM-SHA-512
       CONTROL_CENTER_KAFKA_MYCLUSTER_SECURITY_PROTOCOL: SASL_PLAINTEXT
       CONTROL_CENTER_KAFKA_MYCLUSTER_SASL_JAAS_CONFIG: org.apache.kafka.common.security.scram.ScramLoginModule required username="admin" password="admin";
+
+  postgres:
+    image: postgres:18
+    hostname: postgres
+    container_name: postgres
+    networks:
+      - docker-kafka-quickstarts
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
 
 networks:
   docker-kafka-quickstarts:

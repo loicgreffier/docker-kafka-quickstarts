@@ -1,1 +1,5 @@
 .idea
+kafka-connect/connectors/.DS_Store
+kafka-connect/.DS_Store
+.DS_Store
+corporate-ca.pem
