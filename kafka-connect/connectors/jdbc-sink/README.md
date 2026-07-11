@@ -7,7 +7,7 @@ This Docker Compose environment includes:
 - Schema Registry
 - Kafka Connect, built from a Dockerfile that downloads the JDBC connector
 - PostgreSQL
-- PgAdmin
+- pgAdmin
 - [Producer Avro Specific](https://github.com/loicgreffier/spring-boot-kafka-quickstarts/tree/main/kafka-producer-quickstarts/kafka-producer-avro-specific), producing `<String, KafkaUser>` records to the `USER_TOPIC` topic
 
 ## Prerequisites

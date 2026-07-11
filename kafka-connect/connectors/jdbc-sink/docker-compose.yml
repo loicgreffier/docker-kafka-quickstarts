@@ -150,6 +150,10 @@ services:
       - postgres
     ports:
       - "5050:80"
+    user: root
+    volumes:
+      - ./postgres/servers.json:/pgadmin4/servers.json:ro
+      - ./postgres/pgpass:/pgpass
     environment:
       PGADMIN_DEFAULT_EMAIL: demo@example.com
       PGADMIN_DEFAULT_PASSWORD: changeme
