@@ -37,12 +37,12 @@ Set of Docker Compose environments around Kafka.
 
 ### Kafka Connect
 
-| Module                                                  | Description                                                                                                                 |
-|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| [Base](/kafka-connect/base)                             | KRaft broker, Control Center, Schema Registry, Kafka Connect                                                                |
-| [ACLs SCRAM-SHA-512](/kafka-connect/acls-scram-sha-512) | KRaft broker (ACLs and SCRAM-SHA-512 authentication), Control Center, Schema Registry, Kafka Connect                        |
-| [Datagen](/kafka-connect/connectors/datagen)            | KRaft broker (ACLs and SCRAM-SHA-512 authentication), Control Center, Schema Registry, Kafka Connect with Datagen connector |
-| [JDBC Sink](/kafka-connect/connectors/jdbc-sink)        | KRaft broker (ACLs and SCRAM-SHA-512 authentication), Control Center, Schema Registry, Kafka Connect with JDBC connector    |
+| Module                                    | Description                                                                                                                 |
+|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| [Base](/kafka-connect/base)               | KRaft broker, Control Center, Schema Registry, Kafka Connect                                                                |
+| [Datagen](/kafka-connect/datagen)         | KRaft broker (ACLs and SCRAM-SHA-512 authentication), Control Center, Schema Registry, Kafka Connect with Datagen connector |
+| [JDBC Sink](/kafka-connect/jdbc-sink)     | KRaft broker (ACLs and SCRAM-SHA-512 authentication), Control Center, Schema Registry, Kafka Connect with JDBC connector    |
+| [JDBC Source](/kafka-connect/jdbc-source) | KRaft broker (ACLs and SCRAM-SHA-512 authentication), Control Center, Schema Registry, Kafka Connect with JDBC connector    |
 
 ### Schema Registry
 

@@ -28,7 +28,7 @@ Send a `POST` request to `http://localhost:8083/connectors` with one of the foll
 
 ### Insert with Record Value
 
-Appends every record to the table, using the `id` field from the record value as the primary key:
+Appends every record to the table, using the `id` field from the record value as the primary key.
 
 ```json
 {
@@ -55,7 +55,7 @@ Appends every record to the table, using the `id` field from the record value as
 
 ### Delete with Record Key
 
-Enables deletes on tombstone records, using the record key as the primary key:
+Enables deletes on tombstone records, using the record key as the primary key.
 
 ```json
 {

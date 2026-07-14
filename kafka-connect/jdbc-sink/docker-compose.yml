@@ -58,12 +58,16 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_SASL_JAAS_CONFIG: org.apache.kafka.common.security.scram.ScramLoginModule required username="admin" password="admin";
 
   connect:
-    image: confluentinc/cp-kafka-connect:8.2.0
+    build:
+      context: dockerfile
+      dockerfile: Dockerfile
+    image: cp-kafka-connect-jdbc:8.2.0
     hostname: connect
     container_name: connect
     depends_on:
       - broker
       - schema-registry
+      - postgres
     ports:
       - "8083:8083"
     networks:
@@ -123,6 +127,64 @@ services:
       CONTROL_CENTER_KAFKA_MYCLUSTER_SASL_MECHANISM: SCRAM-SHA-512
       CONTROL_CENTER_KAFKA_MYCLUSTER_SECURITY_PROTOCOL: SASL_PLAINTEXT
       CONTROL_CENTER_KAFKA_MYCLUSTER_SASL_JAAS_CONFIG: org.apache.kafka.common.security.scram.ScramLoginModule required username="admin" password="admin";
+
+  postgres:
+    image: postgres:18
+    hostname: postgres
+    container_name: postgres
+    networks:
+      - docker-kafka-quickstarts
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+
+  pgadmin:
+    image: dpage/pgadmin4:9.16
+    hostname: pgadmin
+    container_name: pgadmin
+    networks:
+      - docker-kafka-quickstarts
+    depends_on:
+      - postgres
+    ports:
+      - "5050:80"
+    user: root
+    volumes:
+      - ./postgres/servers.json:/pgadmin4/servers.json:ro
+      - ./postgres/pgpass:/pgpass
+    environment:
+      PGADMIN_DEFAULT_EMAIL: demo@example.com
+      PGADMIN_DEFAULT_PASSWORD: changeme
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+
+  kafka-producer-avro-specific:
+    image: loicgreffier/spring-boot-kafka-quickstarts:kafka-producer-avro-specific-1.0.0
+    hostname: kafka-producer-avro-specific
+    container_name: kafka-producer-avro-specific
+    networks:
+      - docker-kafka-quickstarts
+    depends_on:
+      - broker
+      - schema-registry
+    ports:
+      - "8082:8080"
+    restart: unless-stopped
+    environment:
+      SPRING_APPLICATION_JSON: |
+        {
+          "kafka": {
+            "properties": {
+              "bootstrap.servers": "broker:29092",
+              "schema.registry.url": "http://schema-registry:8081",
+              "security.protocol": "SASL_PLAINTEXT",
+              "sasl.mechanism": "SCRAM-SHA-512",
+              "sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"admin\" password=\"admin\";"
+            }
+          }
+        }
 
 networks:
   docker-kafka-quickstarts:
