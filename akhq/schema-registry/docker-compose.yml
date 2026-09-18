@@ -53,8 +53,18 @@ services:
     ports:
       - "9021:8080"
     restart: unless-stopped
-    volumes:
-      - ./akhq/application.yml:/app/application.yml:ro
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            docker-kafka-quickstarts-cluster:
+              properties:
+                bootstrap.servers: 'broker:29092'
+              schema-registry:
+                url: 'http://schema-registry:8081'
+          ui-options:
+            topic-data:
+              sort: NEWEST
 
 networks:
   docker-kafka-quickstarts:
