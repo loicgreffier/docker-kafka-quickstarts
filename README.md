@@ -26,7 +26,7 @@ Set of Docker Compose environments around Kafka.
 |------------------------------------------------|--------------------------------------------------------------------------------------------|
 | [Base](/akhq/base)                             | KRaft broker, AKHQ                                                                         |
 | [Schema Registry](/akhq/schema-registry)       | KRaft broker, AKHQ, Schema Registry                                                        |
-| [Connect](/akhq/kafka-connect)                       | KRaft broker, AKHQ, Schema Registry, Kafka Connect                                         |
+| [Connect](/akhq/kafka-connect)                 | KRaft broker, AKHQ, Schema Registry, Kafka Connect                                         |
 | [ACLs SCRAM-SHA-512](/akhq/acls-scram-sha-512) | KRaft broker (ACLs and SCRAM-SHA-512 authentication), AKHQ, Schema Registry, Kafka Connect |
 
 ### Base
